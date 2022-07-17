@@ -3,6 +3,8 @@
 PersistentDataAPI is a more accessible way to approach the quite new, and powerfull storage that mojang provided to minecraft servers since 1.14.
 This API will perform faster, and better when storing information on players, items, and even blocks. 
 
+![](https://img.shields.io/github/tag/thehandsomeyoni/persistentdataapi.svg) ![](https://img.shields.io/github/release/thehandsomeyoni/persistentdataapi.svg)
+
 # What's persistent data?
 Persistent data is a new way to store data INSIDE a player/item/block. The data is persistent, which means it's permenant. 
 The data will change only when it's asked to perform a change.
