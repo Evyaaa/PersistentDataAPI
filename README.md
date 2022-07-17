@@ -13,6 +13,26 @@ The data will be stored even after the plugin (that wrote the data) is removed f
 # That's cool! But how do I use it?
 To use it you'll have to add the repository and dependency to your pom.xml
 
+Currently, the api will use Jitpack, as the host of the repo, so:
+
+Repository:
+
+```
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+ ```
+ 
+ Dependency:
+ ```
+ 	<dependency>
+	    <groupId>com.github.TheHandsomeYoni</groupId>
+	    <artifactId>PersistentDataAPI</artifactId>
+	    <version>1.0.0-DEVELOP</version>
+	</dependency>
+  ```
+  
 # Usage
 (As it's still in development process, data can be stored only on players. 
 BUT, in the near future, you'll be able to store data on blocks, and items in addition to players.)
