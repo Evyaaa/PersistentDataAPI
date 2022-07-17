@@ -55,6 +55,9 @@ Once you've initalized the api, you can freely work with it, to match your needs
 # Credits
 This api was created fully by TheHandsomeYoni.
 For any questions/support you can contact my email:
+
 `thehandsomeyoni@gmail.com`
+
 Or my Discord:
+
 `TheHandsomeYoni#0523`
