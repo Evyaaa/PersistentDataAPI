@@ -17,7 +17,7 @@ Currently, the api will use Jitpack, as the host of the repo, so:
 
 Repository:
 
-```
+```xml
 <repository>
     <id>jitpack.io</id>
     <url>https://jitpack.io</url>
@@ -25,7 +25,7 @@ Repository:
  ```
  
  Dependency:
- ```
+ ```xml
 <dependency>
     <groupId>com.github.TheHandsomeYoni</groupId>
     <artifactId>PersistentDataAPI</artifactId>
