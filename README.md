@@ -46,6 +46,13 @@ You have to register this method in the main class, as it requires a JavaPlugin 
 
 Once you've initalized the api, you can freely work with it, to match your needs.
 
+# Documentation:
+The documentation can be found here.
+
+Or here:
+
+https://thehandsomeyoni.github.io/PersistentDataAPI/
+
 # To do:
 - [x] Publish a first edition of the api.
 - [ ] Support persistent data containers in items.
