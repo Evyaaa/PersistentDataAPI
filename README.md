@@ -29,7 +29,7 @@ Repository:
 <dependency>
     <groupId>com.github.TheHandsomeYoni</groupId>
     <artifactId>PersistentDataAPI</artifactId>
-    <version>1.0.0-DEVELOP</version>
+    <version>1.1.0-DEVELOP</version>
 </dependency>
   ```
   
