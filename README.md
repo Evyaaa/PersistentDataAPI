@@ -18,19 +18,19 @@ Currently, the api will use Jitpack, as the host of the repo, so:
 Repository:
 
 ```
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
  ```
  
  Dependency:
  ```
- 	<dependency>
-	    <groupId>com.github.TheHandsomeYoni</groupId>
-	    <artifactId>PersistentDataAPI</artifactId>
-	    <version>1.0.0-DEVELOP</version>
-	</dependency>
+<dependency>
+    <groupId>com.github.TheHandsomeYoni</groupId>
+    <artifactId>PersistentDataAPI</artifactId>
+    <version>1.0.0-DEVELOP</version>
+</dependency>
   ```
   
 # Usage
