@@ -22,7 +22,7 @@ public abstract class AbstractPersistentData {
         this.dataValue = dataValue;
     }
 
-    public abstract Object changeDataValue(Object newDataValue);
+    public abstract AbstractPersistentData changeDataValue(Object newDataValue);
     public abstract AbstractPersistentData getData();
     public abstract Object getDataValue();
     public abstract String getDataName();
