@@ -3,6 +3,8 @@ package me.thehandsomeyoni.persistentdataapi.data;
 import me.thehandsomeyoni.persistentdataapi.AbstractPersistentData;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.io.Serializable;
+
 /**
  * A class that represents a persistent data.
  * @author TheHandsomeYoni
@@ -12,12 +14,11 @@ public class PersistentData extends AbstractPersistentData {
 
     /**
      * Initializes the PersistentData.
-     * @param dataType The type of the data.
      * @param dataName The name of the data.
      * @param dataValue The value of the data.
      */
-    public PersistentData(PersistentDataType dataType, String dataName, Object dataValue) {
-        super(dataType, dataName, dataValue);
+    public PersistentData(String dataName, Serializable dataValue) {
+        super(dataName, dataValue);
     }
 
     /**
@@ -26,7 +27,7 @@ public class PersistentData extends AbstractPersistentData {
      * @return The new data with the new value.
      */
     @Override
-    public AbstractPersistentData changeDataValue(Object newDataValue) {
+    public AbstractPersistentData changeDataValue(Serializable newDataValue) {
         this.dataValue = newDataValue;
         return this;
     }
@@ -45,7 +46,7 @@ public class PersistentData extends AbstractPersistentData {
      * @return The value of the data.
      */
     @Override
-    public Object getDataValue() {
+    public Serializable getDataValue() {
         return this.dataValue;
     }
 
@@ -62,13 +63,4 @@ public class PersistentData extends AbstractPersistentData {
      * Gets the type of the data.
      * @return The type of the data.
      */
-    @Override
-    public PersistentDataType getDataType() {
-        return this.dataType;
-    }
-
-
-    public static AbstractPersistentData from(PersistentDataType dataType, String dataName, Object dataValue){
-        return new PersistentData(dataType, dataName, dataValue);
-    }
 }

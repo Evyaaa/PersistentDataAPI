@@ -4,10 +4,7 @@ import me.thehandsomeyoni.persistentdataapi.AbstractPersistentData;
 import me.thehandsomeyoni.persistentdataapi.data.PersistentData;
 import me.thehandsomeyoni.persistentdataapi.events.manager.PersistentDataEvent;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-import org.bukkit.persistence.PersistentDataType;
 
 /**
  * A custom event that is called when a player's persistent data is written.
@@ -36,12 +33,11 @@ public class PlayerPersistentDataDeleteEvent extends PersistentDataEvent {
     /**
      * Initializes the PlayerPersistentDataDeleteEvent.
      * @param player The player that the persistent data is being deleted from.
-     * @param type The type of the persistent data.
      * @param dataName The name of the persistent data.
      */
-    public PlayerPersistentDataDeleteEvent(Player player, PersistentDataType type, String dataName) {
-        super(PersistentData.from(type, dataName, null));
-        this.persistentData = PersistentData.from(type, dataName, null);
+    public PlayerPersistentDataDeleteEvent(Player player, String dataName) {
+        super(new PersistentData(dataName, null));
+        this.persistentData = new PersistentData(dataName, null);
         this.player = player;
         cancelled = false;
     }

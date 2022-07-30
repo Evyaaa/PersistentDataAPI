@@ -11,6 +11,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.io.Serializable;
+
 /**
  * A custom event that is called when an item's persistent data is written.\
  * @author TheHandsomeYoni
@@ -21,8 +23,7 @@ public class ItemPersistentDataWriteEvent extends PersistentDataEvent {
     private boolean cancelled;
     private AbstractPersistentData persistentData;
     private String dataName;
-    private PersistentDataType type;
-    private Object dataValue;
+    private Serializable dataValue;
     private ItemStack itemStack;
     private ItemMeta meta;
 
@@ -42,13 +43,12 @@ public class ItemPersistentDataWriteEvent extends PersistentDataEvent {
     /**
      * Initializes the PlayerPersistentDataWriteEvent.
      * @param item The item that the persistent data is being written to.
-     * @param type The type of the persistent data.
      * @param dataName The name of the persistent data.
      * @param dataValue The value of the persistent data.
      */
-    public ItemPersistentDataWriteEvent(ItemStack item, PersistentDataType type, String dataName, Object dataValue) {
-        super(PersistentData.from(type, dataName, dataValue));
-        this.persistentData = PersistentData.from(type, dataName, dataValue);
+    public ItemPersistentDataWriteEvent(ItemStack item, String dataName, Serializable dataValue) {
+        super(new PersistentData(dataName, dataValue));
+        this.persistentData = new PersistentData(dataName, dataValue);
         this.itemStack = item;
         cancelled = false;
     }
@@ -115,23 +115,6 @@ public class ItemPersistentDataWriteEvent extends PersistentDataEvent {
     }
 
     /**
-     * Gets the data type of the persistent data.
-     * @return The data type.
-     */
-    public PersistentDataType getType() {
-        this.type = persistentData.getDataType();
-        return type;
-    }
-
-    /**
-     * Changes the data type of the persistent data.
-     * @param type The new data type.
-     */
-    public void setType(PersistentDataType type) {
-        this.type = type;
-    }
-
-    /**
      * Gets the data value of the persistent data.
      * @return The data value.
      */
@@ -144,7 +127,7 @@ public class ItemPersistentDataWriteEvent extends PersistentDataEvent {
      * Changes the data value of the persistent data.
      * @param dataValue The new data value.
      */
-    public void setDataValue(Object dataValue) {
+    public void setDataValue(Serializable dataValue) {
         this.dataValue = dataValue;
     }
 

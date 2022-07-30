@@ -11,6 +11,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.io.Serializable;
+
 /**
  * A custom event that is called when an item's persistent data is written.
  * @author TheHandsomeYoni
@@ -23,8 +25,7 @@ public class ItemPersistentDataDeleteEvent extends PersistentDataEvent {
     private boolean cancelled;
     private AbstractPersistentData persistentData;
     private String dataName;
-    private PersistentDataType type;
-    private Object dataValue;
+    private Serializable dataValue;
     private ItemStack itemStack;
     private ItemMeta meta;
 
@@ -44,12 +45,11 @@ public class ItemPersistentDataDeleteEvent extends PersistentDataEvent {
     /**
      * Initializes the PlayerPersistentDataDeleteEvent.
      * @param item The item that the persistent data is being deleted from.
-     * @param type The type of the persistent data.
      * @param dataName The name of the persistent data.
      */
-    public ItemPersistentDataDeleteEvent(ItemStack item, PersistentDataType type, String dataName) {
-        super(PersistentData.from(type, dataName, null));
-        this.persistentData = PersistentData.from(type, dataName, null);
+    public ItemPersistentDataDeleteEvent(ItemStack item, String dataName) {
+        super(new PersistentData(dataName, null));
+        this.persistentData = new PersistentData(dataName, null);
         this.itemStack = item;
         cancelled = false;
     }
@@ -116,23 +116,6 @@ public class ItemPersistentDataDeleteEvent extends PersistentDataEvent {
     }
 
     /**
-     * Gets the data type of the persistent data.
-     * @return The data type.
-     */
-    public PersistentDataType getType() {
-        this.type = persistentData.getDataType();
-        return type;
-    }
-
-    /**
-     * Changes the data type of the persistent data.
-     * @param type The new data type.
-     */
-    public void setType(PersistentDataType type) {
-        this.type = type;
-    }
-
-    /**
      * Gets the data value of the persistent data.
      * @return The data value.
      */
@@ -145,7 +128,7 @@ public class ItemPersistentDataDeleteEvent extends PersistentDataEvent {
      * Changes the data value of the persistent data.
      * @param dataValue The new data value.
      */
-    public void setDataValue(Object dataValue) {
+    public void setDataValue(Serializable dataValue) {
         this.dataValue = dataValue;
     }
 

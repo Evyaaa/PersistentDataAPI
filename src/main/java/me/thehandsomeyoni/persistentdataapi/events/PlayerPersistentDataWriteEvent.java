@@ -10,6 +10,8 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.io.Serializable;
+
 /**
  * A custom event that is called when a player's persistent data is written.
  * @author TheHandsomeYoni
@@ -20,7 +22,6 @@ public class PlayerPersistentDataWriteEvent extends PersistentDataEvent {
     private boolean cancelled;
     private AbstractPersistentData persistentData;
     private String dataName;
-    private PersistentDataType type;
     private Object dataValue;
     private Player player;
 
@@ -40,13 +41,12 @@ public class PlayerPersistentDataWriteEvent extends PersistentDataEvent {
     /**
      * Initializes the PlayerPersistentDataWriteEvent.
      * @param player The player that the persistent data is being written to.
-     * @param type The type of the persistent data.
      * @param dataName The name of the persistent data.
      * @param dataValue The value of the persistent data.
      */
-    public PlayerPersistentDataWriteEvent(Player player, PersistentDataType type, String dataName, Object dataValue) {
-        super(PersistentData.from(type, dataName, dataValue));
-        this.persistentData = PersistentData.from(type, dataName, dataValue);
+    public PlayerPersistentDataWriteEvent(Player player, String dataName, Serializable dataValue) {
+        super(new PersistentData(dataName, dataValue));
+        this.persistentData = new PersistentData(dataName, dataValue);
         this.player = player;
         cancelled = false;
     }
@@ -100,15 +100,6 @@ public class PlayerPersistentDataWriteEvent extends PersistentDataEvent {
     public String getDataName() {
         this.dataName = persistentData.getDataName();
         return dataName;
-    }
-
-    /**
-     * Gets the data type of the persistent data.
-     * @return The data type.
-     */
-    public PersistentDataType getType() {
-        this.type = persistentData.getDataType();
-        return type;
     }
 
     /**

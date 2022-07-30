@@ -1,6 +1,6 @@
 package me.thehandsomeyoni.persistentdataapi;
 
-import me.thehandsomeyoni.persistentdataapi.data.DataRegistry;
+import me.thehandsomeyoni.persistentdataapi.manager.DataRegistry;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 

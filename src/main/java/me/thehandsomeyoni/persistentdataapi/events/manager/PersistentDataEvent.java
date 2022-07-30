@@ -6,6 +6,8 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.io.Serializable;
+
 /**
  * A class that represents a persistent data event.
  * @author TheHandsomeYoni
@@ -24,12 +26,11 @@ public abstract class PersistentDataEvent extends Event implements Cancellable {
 
     /**
      * Initializes the PersistentDataEvent with given data values.
-     * @param type The type of the data.
      * @param dataName The name of the data.
      * @param dataValue The value of the data.
      */
-    public PersistentDataEvent(PersistentDataType type, String dataName, Object dataValue) {
-        this.persistentData = PersistentData.from(type, dataName, dataValue);
+    public PersistentDataEvent( String dataName, Serializable dataValue) {
+        this.persistentData = new PersistentData(dataName, dataValue);
     }
 
     /**
@@ -46,14 +47,6 @@ public abstract class PersistentDataEvent extends Event implements Cancellable {
      */
     public String getDataName() {
         return persistentData.getDataName();
-    }
-
-    /**
-     * Gets the type of the data.
-     * @return The type of the data.
-     */
-    public PersistentDataType getDataType() {
-        return persistentData.getDataType();
     }
 
     /**
