@@ -58,9 +58,4 @@ public class PersistentData extends AbstractPersistentData {
     public String getDataName() {
         return this.dataName;
     }
-
-    /**
-     * Gets the type of the data.
-     * @return The type of the data.
-     */
 }
