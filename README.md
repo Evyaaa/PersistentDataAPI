@@ -56,7 +56,8 @@ https://thehandsomeyoni.github.io/PersistentDataAPI/
 - [x] Support persistent data containers in items.
 - [x] Support persistent data containers in blocks.
 - [x] Create and support custom data types.
-- [x] Create custom events that support persistent data
+- [x] Create custom events that support persistent data.
+- [ ] Support persistent data in chunks.
 
 # Credits
 This api was created fully by TheHandsomeYoni.
