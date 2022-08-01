@@ -29,7 +29,7 @@ Repository:
 <dependency>
     <groupId>com.github.TheHandsomeYoni</groupId>
     <artifactId>PersistentDataAPI</artifactId>
-    <version>1.7.0-DEVELOP</version>
+    <version>1.8.0-ALPHA</version>
 </dependency>
   ```
   
@@ -54,7 +54,7 @@ https://thehandsomeyoni.github.io/PersistentDataAPI/
 # To do:
 - [x] Publish a first edition of the api.
 - [x] Support persistent data containers in items.
-- [ ] Support persistent data containers in blocks.
+- [x] Support persistent data containers in blocks.
 - [x] Create and support custom data types.
 - [x] Create custom events that support persistent data
 
