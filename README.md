@@ -34,8 +34,6 @@ Repository:
   ```
   
 # Usage
-(As it's still in development process, data can be stored only on players. 
-BUT, in the near future, you'll be able to store data on blocks, and items in addition to players.)
 
 # Initialize the api:
 Write this method in the onEnable() method, in main class
