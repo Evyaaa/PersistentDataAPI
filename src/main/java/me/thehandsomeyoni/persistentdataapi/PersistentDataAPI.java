@@ -1,7 +1,10 @@
 package me.thehandsomeyoni.persistentdataapi;
 
+import me.thehandsomeyoni.persistentdataapi.exceptions.UnacceptableBlockException;
 import me.thehandsomeyoni.persistentdataapi.manager.DataRegistry;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -24,12 +27,26 @@ public final class PersistentDataAPI {
     }
 
     /**
-     * Gets the instance of the PersistentDataAPI.
-     * @return The instance of the PersistentDataAPI.
+     * Gets the instance of the DataRegistry.
+     * @return The DataRegistry of the given player.
      */
     public DataRegistry getDataRegistry(Player player){
        return new DataRegistry(player);
     }
+
+    /**
+     * Gets the instance of the DataRegistry.
+     * @param item The DataRegistry of the given item.
+     * @return
+     */
+    public DataRegistry getDataRegistry(ItemStack item){ return new DataRegistry(item); }
+
+    /**
+     * Gets the instance of the DataRegistry.
+     * @param block The DataRegistry of the given block.
+     * @return
+     */
+    public DataRegistry getDataRegistry(Block block) throws UnacceptableBlockException { return new DataRegistry(block); }
 
 
 

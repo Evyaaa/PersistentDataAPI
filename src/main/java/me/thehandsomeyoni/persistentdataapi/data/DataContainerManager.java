@@ -1,17 +1,17 @@
 package me.thehandsomeyoni.persistentdataapi.data;
 
 
-import me.thehandsomeyoni.persistentdataapi.manager.DataSerializer;
 import org.bukkit.NamespacedKey;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
 import static me.thehandsomeyoni.persistentdataapi.PersistentDataAPI.getJavaPlugin;
+import static me.thehandsomeyoni.persistentdataapi.data.DataContainerManager.DataSerializer.deserialize;
 import static me.thehandsomeyoni.persistentdataapi.manager.DataSerializer.serialize;
 
 public class DataContainerManager  {
@@ -49,7 +49,7 @@ public class DataContainerManager  {
      * @return The data in the given type.
      */
     public Serializable getUnserialized(String key){
-        return DataSerializer.deserialize(container.get(new NamespacedKey(getJavaPlugin(), key), PersistentDataType.BYTE_ARRAY));
+        return deserialize(container.get(new NamespacedKey(getJavaPlugin(), key), PersistentDataType.BYTE_ARRAY));
     }
 
     /**
@@ -58,7 +58,7 @@ public class DataContainerManager  {
      * @return The data in the given type.
      */
     public Serializable getUnserialized(NamespacedKey key){
-        return DataSerializer.deserialize(container.get(key, PersistentDataType.BYTE_ARRAY));
+        return deserialize(container.get(key, PersistentDataType.BYTE_ARRAY));
     }
 
     public Set<String> getAllKeys(){
@@ -103,6 +103,56 @@ public class DataContainerManager  {
      */
     public boolean has(String key){
         return container.has(new NamespacedKey(getJavaPlugin(), key), PersistentDataType.BYTE_ARRAY);
+    }
+
+    /**
+     * Simple serializer for serializing and deserializing data.
+     * @author TheHandsomeYoni
+     * @version 1.5.0
+     */
+    static class DataSerializer {
+        private static ByteArrayOutputStream byteArrayOutput;
+        private static ObjectOutputStream objectOutput;
+
+        private static ByteArrayInputStream byteArrayInput;
+        private static ObjectInputStream objectInput;
+
+
+        /**
+         * Turns the raw data into byte array.
+         *
+         * @param object The data.
+         * @return The data in bytes.
+         */
+        public static byte[] serialize(Object object) {
+            try {
+                byteArrayOutput = new ByteArrayOutputStream();
+                objectOutput = new ObjectOutputStream(byteArrayOutput);
+                objectOutput.writeObject(object);
+                objectOutput.flush();
+                return byteArrayOutput.toByteArray();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        /**
+         * Turns the byte array into data.
+         *
+         * @param bytes The bytes.
+         * @return The data.
+         */
+        public static Serializable deserialize(byte[] bytes) {
+            byteArrayInput = new ByteArrayInputStream(bytes);
+            try {
+                objectInput = new ObjectInputStream(byteArrayInput);
+                return (Serializable) objectInput.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
     }
 
 }
