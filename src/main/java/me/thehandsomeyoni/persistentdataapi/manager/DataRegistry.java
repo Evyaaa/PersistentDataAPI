@@ -31,7 +31,7 @@ import static me.thehandsomeyoni.persistentdataapi.PersistentDataAPI.getJavaPlug
  */
 public class DataRegistry {
     private Player player;
-    private ItemStack item;
+    private ItemStack item = null;
     private final PersistentDataType<byte[], byte[]> dataType = PersistentDataType.BYTE_ARRAY;
     private ItemMeta meta;
     private Block block;
@@ -51,11 +51,11 @@ public class DataRegistry {
 
     /**
      * Initializes the DataRegistry of an item.
-     * @param item The item that the data is stored in.
+     * @param itemStack The item that the data is stored in.
      * @throws NullPointerException If the item is null.
      */
-    public DataRegistry(ItemStack item) throws NullPointerException {
-        this.item = item;
+    public DataRegistry(ItemStack itemStack) throws NullPointerException {
+        this.item = itemStack;
         this.meta = this.item.getItemMeta();
         assert meta != null;
         this.dataContainer = meta.getPersistentDataContainer();
