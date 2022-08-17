@@ -32,18 +32,18 @@ import static me.thehandsomeyoni.persistentdataapi.PersistentDataAPI.getJavaPlug
 public class DataRegistry {
     private Player player;
     private ItemStack item;
-    private PersistentDataType dataType = PersistentDataType.BYTE_ARRAY;
+    private final PersistentDataType<byte[], byte[]> dataType = PersistentDataType.BYTE_ARRAY;
     private ItemMeta meta;
     private Block block;
-    private TileState state;
-    private PersistentDataContainer dataContainer;
+    private final PersistentDataContainer dataContainer;
     private DataContainerManager manager;
 
     /**
      * Initializes the DataRegistry of a player.
      * @param player The player that the data is stored in.
+     * @throws NullPointerException If the player is null.
      */
-    public DataRegistry(Player player){
+    public DataRegistry(Player player) throws NullPointerException {
         this.player = player;
         this.dataContainer = player.getPersistentDataContainer();
         this.manager = new DataContainerManager(dataContainer);
@@ -52,10 +52,12 @@ public class DataRegistry {
     /**
      * Initializes the DataRegistry of an item.
      * @param item The item that the data is stored in.
+     * @throws NullPointerException If the item is null.
      */
-    public DataRegistry(ItemStack item){
+    public DataRegistry(ItemStack item) throws NullPointerException {
         this.item = item;
-        this.meta = item.getItemMeta();
+        this.meta = this.item.getItemMeta();
+        assert meta != null;
         this.dataContainer = meta.getPersistentDataContainer();
         this.manager = new DataContainerManager(dataContainer);
     }
@@ -64,15 +66,16 @@ public class DataRegistry {
      * Initializes the DataRegistry of a block.
      * @param block The block that the data is stored in.
      * @throws UnacceptableBlockException If the block isn't acceptable/doesn't have a persistent data container.
+     * @throws NullPointerException If the block is null.
      */
-    public DataRegistry(Block block) throws UnacceptableBlockException {
+    public DataRegistry(Block block) throws UnacceptableBlockException, NullPointerException {
         this.block = block;
 
         if(!(block.getState() instanceof TileState)){
             throw new UnacceptableBlockException();
         }
 
-        this.state = (TileState) block.getState();
+        TileState state = (TileState) block.getState();
         this.dataContainer = state.getPersistentDataContainer();
     }
 
