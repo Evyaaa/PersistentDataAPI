@@ -93,6 +93,7 @@ public class DataRegistry {
         }
 
         if (item != null) {
+            item.setItemMeta(meta);
             ItemPersistentDataWriteEvent event = new ItemPersistentDataWriteEvent(item, new PersistentData(dataName, dataValue));
             getJavaPlugin().getServer().getPluginManager().callEvent(event);
         }
@@ -119,6 +120,7 @@ public class DataRegistry {
         }
 
         if (item != null) {
+            item.setItemMeta(meta);
             ItemPersistentDataWriteEvent event = new ItemPersistentDataWriteEvent(item, data);
             getJavaPlugin().getServer().getPluginManager().callEvent(event);
         }
@@ -144,6 +146,7 @@ public class DataRegistry {
         }
 
         if (item != null) {
+            item.setItemMeta(meta);
             ItemPersistentDataDeleteEvent event = new ItemPersistentDataDeleteEvent(item, dataName);
             getJavaPlugin().getServer().getPluginManager().callEvent(event);
         }
@@ -170,6 +173,7 @@ public class DataRegistry {
         }
 
         if (item != null) {
+            item.setItemMeta(meta);
             ItemPersistentDataDeleteEvent event = new ItemPersistentDataDeleteEvent(item, data);
             getJavaPlugin().getServer().getPluginManager().callEvent(event);
         }
@@ -194,6 +198,7 @@ public class DataRegistry {
         }
 
         if (item != null) {
+            item.setItemMeta(meta);
             ItemPersistentDataWriteEvent event = new ItemPersistentDataWriteEvent(item, data);
             getJavaPlugin().getServer().getPluginManager().callEvent(event);
         }
@@ -213,6 +218,7 @@ public class DataRegistry {
         }
 
         if (item != null) {
+            item.setItemMeta(meta);
             ItemPersistentDataWriteEvent event = new ItemPersistentDataWriteEvent(item, new PersistentData(dataName, dataValue));
             getJavaPlugin().getServer().getPluginManager().callEvent(event);
         }
