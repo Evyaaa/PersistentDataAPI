@@ -37,14 +37,14 @@ public final class PersistentDataAPI {
     /**
      * Gets the instance of the DataRegistry.
      * @param item The DataRegistry of the given item.
-     * @return
+     * @return The DataRegistry of the given item.
      */
     public DataRegistry getDataRegistry(ItemStack item){ return new DataRegistry(item); }
 
     /**
      * Gets the instance of the DataRegistry.
      * @param block The DataRegistry of the given block.
-     * @return
+     * @return The DataRegistry of the given block.
      */
     public DataRegistry getDataRegistry(Block block) throws UnacceptableBlockException { return new DataRegistry(block); }
 

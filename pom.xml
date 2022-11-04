@@ -6,7 +6,7 @@
 
     <groupId>me.thehandsomeyoni</groupId>
     <artifactId>PersistentDataAPI</artifactId>
-    <version>1.8.3-ALPHA</version>
+    <version>1.8.5-ALPHA</version>
     <packaging>jar</packaging>
 
     <name>PersistentDataAPI</name>

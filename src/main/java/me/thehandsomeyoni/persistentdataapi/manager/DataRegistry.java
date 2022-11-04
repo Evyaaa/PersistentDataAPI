@@ -55,10 +55,13 @@ public class DataRegistry {
      * @throws NullPointerException If the item is null.
      */
     public DataRegistry(ItemStack itemStack) throws NullPointerException {
-        this.item = itemStack;
-        this.meta = this.item.getItemMeta();
-        assert meta != null;
-        this.dataContainer = meta.getPersistentDataContainer();
+        try {
+            this.item = itemStack;
+            this.meta = itemStack.getItemMeta();
+            this.dataContainer = this.meta.getPersistentDataContainer();
+        } catch (NullPointerException e) {
+            throw new NullPointerException("The item is null.");
+        }
         this.manager = new DataContainerManager(dataContainer);
     }
 
