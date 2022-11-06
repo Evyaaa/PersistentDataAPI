@@ -1,5 +1,7 @@
 package me.thehandsomeyoni.persistentdataapi;
 
+import me.thehandsomeyoni.persistentdataapi.data.PersistentData;
+import me.thehandsomeyoni.persistentdataapi.data.SerializablePersistentData;
 import org.bukkit.persistence.PersistentDataType;
 
 import java.io.Serializable;
@@ -9,7 +11,7 @@ import java.io.Serializable;
  * @author TheHandsomeYoni
  * @since 1.0
  */
-public abstract class AbstractPersistentData {
+public abstract class AbstractPersistentData implements SerializablePersistentData<AbstractPersistentData> {
     /** The name of the data associated with the persistent data */ protected String dataName;
     /** The value of the data associated with the persistent data */ protected Serializable dataValue;
 

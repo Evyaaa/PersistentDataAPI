@@ -2,19 +2,22 @@ package me.thehandsomeyoni.persistentdataapi;
 
 import me.thehandsomeyoni.persistentdataapi.exceptions.UnacceptableBlockException;
 import me.thehandsomeyoni.persistentdataapi.manager.DataRegistry;
+import me.thehandsomeyoni.persistentdataapi.manager.SerializableBukkit;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  *  The class that initializes the API.
  * @author TheHandsomeYoni
- * @version 1.6.0
+ * @version 1.9.0-ALPHA
  */
 public final class PersistentDataAPI {
 
-    /** The borrowed java plugin */ protected JavaPlugin plugin;
+    /** The borrowed java plugin */
+    private JavaPlugin plugin;
     private static PersistentDataAPI instance;
 
     /**
@@ -23,7 +26,7 @@ public final class PersistentDataAPI {
      */
     public PersistentDataAPI(JavaPlugin plugin) {
         this.plugin = plugin;
-        this.instance = this;
+        instance = this;
     }
 
     /**
@@ -48,6 +51,12 @@ public final class PersistentDataAPI {
      */
     public DataRegistry getDataRegistry(Block block) throws UnacceptableBlockException { return new DataRegistry(block); }
 
+    /**
+     * Gets the instance of BukkitSerializer to a given data container.
+     * @param container The given data container.
+     * @return The BukkitSerializer to the given data container.
+     */
+    public SerializableBukkit getBukkitSerializer(PersistentDataContainer container) { return new SerializableBukkit(container); }
 
 
     /**
@@ -65,13 +74,5 @@ public final class PersistentDataAPI {
     public static JavaPlugin getJavaPlugin() {
         return PersistentDataAPI.getInstance().plugin;
     }
-
-
-
-
-
-
-
-
 
 }

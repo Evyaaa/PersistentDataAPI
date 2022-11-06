@@ -239,7 +239,7 @@ public class DataRegistry {
     public Serializable getData(String dataName) throws DataException {
         if(!manager.has(dataName)) throw new DataException("Data doesn't exist!");
 
-        return manager.getUnserialized(dataName);
+        return manager.getDeserialized(dataName);
     }
 
     /**
@@ -251,7 +251,7 @@ public class DataRegistry {
     public Serializable getData(AbstractPersistentData data) throws DataException {
         if(!manager.has(data.getDataName())) throw new DataException("Data doesn't exist!");
 
-        return manager.getUnserialized(data.getDataName());
+        return manager.getDeserialized(data.getDataName());
     }
 
     public HashMap<String, Serializable> getAllData() {

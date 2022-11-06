@@ -1,9 +1,12 @@
 package me.thehandsomeyoni.persistentdataapi.data;
 
 import me.thehandsomeyoni.persistentdataapi.AbstractPersistentData;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.persistence.PersistentDataType;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A class that represents a persistent data.
@@ -57,5 +60,30 @@ public class PersistentData extends AbstractPersistentData {
     @Override
     public String getDataName() {
         return this.dataName;
+    }
+
+    /**
+     * Serializes data to map, using the same way found in: {@link ConfigurationSerializable}.
+     *
+     * @return A map with all the data.
+     */
+    @Override
+    public Map<String, Serializable> serialize() {
+        Map<String, Serializable> map = new HashMap<>();
+
+        map.put("dataName", this.dataName);
+        map.put("dataValue", this.dataValue);
+
+        return map;
+    }
+
+    /**
+     * Deserializes data from map
+     *
+     * @param map The map with all the data.
+     * @return The deserialized data.
+     */
+    public static PersistentData deserialize(Map<String, Serializable> map) {
+        return new PersistentData(map.get("dataName").toString(), map.get("dataValue"));
     }
 }

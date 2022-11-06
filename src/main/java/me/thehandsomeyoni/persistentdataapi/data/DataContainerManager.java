@@ -12,7 +12,7 @@ import java.util.Set;
 
 import static me.thehandsomeyoni.persistentdataapi.PersistentDataAPI.getJavaPlugin;
 import static me.thehandsomeyoni.persistentdataapi.data.DataContainerManager.DataSerializer.deserialize;
-import static me.thehandsomeyoni.persistentdataapi.manager.DataSerializer.serialize;
+import static me.thehandsomeyoni.persistentdataapi.data.DataContainerManager.DataSerializer.serialize;
 
 public class DataContainerManager  {
     private PersistentDataContainer container;
@@ -48,7 +48,7 @@ public class DataContainerManager  {
      * @param key The key of the data.
      * @return The data in the given type.
      */
-    public Serializable getUnserialized(String key){
+    public Serializable getDeserialized(String key){
         return deserialize(container.get(new NamespacedKey(getJavaPlugin(), key), PersistentDataType.BYTE_ARRAY));
     }
 
@@ -57,7 +57,7 @@ public class DataContainerManager  {
      * @param key The key of the data.
      * @return The data in the given type.
      */
-    public Serializable getUnserialized(NamespacedKey key){
+    public Serializable getDeserialized(NamespacedKey key){
         return deserialize(container.get(key, PersistentDataType.BYTE_ARRAY));
     }
 
@@ -75,7 +75,7 @@ public class DataContainerManager  {
         HashMap<String, Serializable> data = new HashMap<>();
 
         container.getKeys().forEach(key -> {
-            data.put(key.getKey(), getUnserialized(key));
+            data.put(key.getKey(), getDeserialized(key));
         });
 
         return data;
