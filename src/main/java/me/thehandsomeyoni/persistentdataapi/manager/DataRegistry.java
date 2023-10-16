@@ -80,6 +80,8 @@ public class DataRegistry {
 
         TileState state = (TileState) block.getState();
         this.dataContainer = state.getPersistentDataContainer();
+        
+        this.manager = new DataContainerManager(dataContainer);
     }
 
     /**
