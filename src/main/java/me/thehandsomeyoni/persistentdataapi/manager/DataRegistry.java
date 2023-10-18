@@ -80,7 +80,7 @@ public class DataRegistry {
         }
 
         this.blockState = (TileState) block.getState();
-        this.dataContainer = state.getPersistentDataContainer();
+        this.dataContainer = this.blockState.getPersistentDataContainer();
         
         this.manager = new DataContainerManager(dataContainer);
     }
@@ -108,6 +108,7 @@ public class DataRegistry {
         }
 
         if (block != null) {
+            this.blockState.update();
             BlockPersistentDataWriteEvent event = new BlockPersistentDataWriteEvent(block, dataName, dataValue);
             getJavaPlugin().getServer().getPluginManager().callEvent(event);
         }
@@ -135,6 +136,7 @@ public class DataRegistry {
         }
 
         if (block != null) {
+            this.blockState.update();
             BlockPersistentDataWriteEvent event = new BlockPersistentDataWriteEvent(block, data);
             getJavaPlugin().getServer().getPluginManager().callEvent(event);
         }
@@ -161,6 +163,7 @@ public class DataRegistry {
         }
 
         if(block != null){
+            this.blockState.update();
             BlockPersistentDataDeleteEvent event = new BlockPersistentDataDeleteEvent(block, dataName);
             getJavaPlugin().getServer().getPluginManager().callEvent(event);
         }
@@ -188,6 +191,7 @@ public class DataRegistry {
         }
 
         if(block != null){
+            this.blockState.update();
             BlockPersistentDataDeleteEvent event = new BlockPersistentDataDeleteEvent(block, data);
             getJavaPlugin().getServer().getPluginManager().callEvent(event);
         }
@@ -211,6 +215,11 @@ public class DataRegistry {
             ItemPersistentDataWriteEvent event = new ItemPersistentDataWriteEvent(item, data);
             getJavaPlugin().getServer().getPluginManager().callEvent(event);
         }
+
+        if (block != null) {
+            this.blockState.update();
+            BlockPersistentDataWriteEvent event = new BlockPersistentDataWriteEvent(block, data);
+        }
     }
 
     /**
@@ -230,6 +239,11 @@ public class DataRegistry {
             item.setItemMeta(meta);
             ItemPersistentDataWriteEvent event = new ItemPersistentDataWriteEvent(item, new PersistentData(dataName, dataValue));
             getJavaPlugin().getServer().getPluginManager().callEvent(event);
+        }
+
+        if (block != null) {
+            this.blockState.update();
+            BlockPersistentDataWriteEvent event = new BlockPersistentDataWriteEvent(block, new PersistentData(dataName, dataValue));
         }
     }
 
