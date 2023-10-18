@@ -37,6 +37,7 @@ public class DataRegistry {
     private Block block;
     private final PersistentDataContainer dataContainer;
     private DataContainerManager manager;
+    private TileState blockState;
 
     /**
      * Initializes the DataRegistry of a player.
@@ -78,7 +79,7 @@ public class DataRegistry {
             throw new UnacceptableBlockException();
         }
 
-        TileState state = (TileState) block.getState();
+        this.blockState = (TileState) block.getState();
         this.dataContainer = state.getPersistentDataContainer();
         
         this.manager = new DataContainerManager(dataContainer);
