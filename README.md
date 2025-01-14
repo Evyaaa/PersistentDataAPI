@@ -6,7 +6,7 @@ This API will perform faster, and better when storing information on players, it
 ![](https://img.shields.io/github/tag/thehandsomeyoni/persistentdataapi.svg) ![](https://img.shields.io/github/release/thehandsomeyoni/persistentdataapi.svg)
 
 # What's persistent data?
-Persistent data is a new way to store data INSIDE a player/item/block. The data is persistent, which means it's permenant. 
+Persistent data is a new way to store data inside a player/item/block. The data is persistent, which means it's permenant. 
 The data will change only when it's asked to perform a change.
 The data will be stored even after the plugin (that wrote the data) is removed from the server.
 
