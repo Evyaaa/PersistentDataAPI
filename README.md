@@ -27,9 +27,9 @@ Repository:
  Dependency:
  ```xml
 <dependency>
-	<groupId>com.github.TheHandsomeYoni</groupId>
-	<artifactId>PersistentDataAPI</artifactId>
-	<version>2.0.2</version>
+    <groupId>com.github.Evyaaa</groupId>
+    <artifactId>PersistentDataAPI</artifactId>
+    <version>2.0.2</version>
 </dependency>
   ```
   
@@ -47,7 +47,7 @@ Once you've initalized the api, you can freely work with it, to match your needs
 # [Documentation](https://thehandsomeyoni.github.io/PersistentDataAPI/)
 The documentation can be found here:
 
-https://thehandsomeyoni.github.io/PersistentDataAPI/
+https://evyaaa.github.io/PersistentDataAPI/
 
 # To do:
 - [x] Publish a first edition of the api.

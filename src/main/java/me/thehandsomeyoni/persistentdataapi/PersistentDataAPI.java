@@ -12,7 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  *  The class that initializes the API.
  * @author TheHandsomeYoni
- * @version 1.9.0-ALPHA
+ * @version 2.0.2
  */
 public final class PersistentDataAPI {
 
